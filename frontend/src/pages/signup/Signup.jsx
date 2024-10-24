@@ -5,7 +5,7 @@ import useSignup from '../../hooks/useSignup'
 
 const Signup = () => {
 
-    const [inputs,setInputs] = useState({
+    const [inputs, setInputs] = useState({
         fullName: "",
         username: "",
         password: "",
@@ -13,14 +13,14 @@ const Signup = () => {
         gender: ""
     })
 
-   const {loading,signup} = useSignup(inputs)
+    const { loading, signup } = useSignup(inputs)
 
-    const handleCheckboxChange = (gender) =>{
-        setInputs({...inputs,gender})
+    const handleCheckboxChange = (gender) => {
+        setInputs({ ...inputs, gender })
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-       await signup(inputs)
+        await signup(inputs)
     }
 
     return (
@@ -38,40 +38,43 @@ const Signup = () => {
                             <span className='text-base label-text'>Full Name</span>
                         </label>
                         <input type="text" placeholder='Enter Full Name' className='w-full input input-bordered h-10' value={inputs.fullName}
-                        onChange={(e)=>setInputs({...inputs,fullName:e.target.value})} />
+                            onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })} />
                         <label className='label p-2'>
                             <span className='text-base label-text'>Username</span>
                         </label>
                         <input type="text" placeholder='Enter Username' className='w-full input input-bordered h-10'
-                        value={inputs.username}
-                        onChange={(e)=>setInputs({...inputs,username:e.target.value})}
+                            value={inputs.username}
+                            onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
                         />
                         <label className='label p-2'>
                             <span className='text-base label-text'>Password</span>
                         </label>
                         <input type="password" placeholder='Enter Password' className='w-full input input-bordered h-10'
-                        value={inputs.password}
-                        onChange={(e)=>setInputs({...inputs,password:e.target.value})}
+                            value={inputs.password}
+                            onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
                         />
                         <label className='label p-2'>
                             <span className='text-base label-text'>Confirm Password</span>
                         </label>
                         <input type="password" placeholder='Enter Password' className='w-full input input-bordered h-10'
-                        value={inputs.confirmPassword}
-                        onChange={(e)=>setInputs({...inputs,confirmPassword:e.target.value})}
+                            value={inputs.confirmPassword}
+                            onChange={(e) => setInputs({ ...inputs, confirmPassword: e.target.value })}
                         />
 
                     </div>
-                    <GenderCheckbox onCheckboxChange={handleCheckboxChange} selectedGender = {inputs.gender}/>
+                    <GenderCheckbox onCheckboxChange={handleCheckboxChange} selectedGender={inputs.gender} />
                     <Link to="/login" className='text-sm hover:underline hover:text-blue-600 mt-2 inline-block'>
                         Already have an account?
                     </Link>
                     <div>
                         <button className='btn btn-block btn-sm mt-2' type='submit'>
-                            Signup
+                            {loading ? <span className='loading loading-spinner'></span> 
+                            :
+                            "Sign Up"}
+
                         </button>
                     </div>
-                    </form>
+                </form>
             </div>
 
         </div>
