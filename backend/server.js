@@ -1,4 +1,4 @@
-import { app } from "./app.js";
+import { app,server } from "./socket/socket.js";
 import dotenv from "dotenv"
 import cookieParser from "cookie-parser";
 
@@ -31,7 +31,7 @@ app.use("/api/auth",authRoutes)
 app.use("/api/messages",messageRoutes)
 app.use("/api/users",userRoutes)
 
-app.listen(PORT, ()=>{
+server.listen(PORT, ()=>{
     connectDB();
     console.log(`Server is running at : ${PORT}`);
 })
