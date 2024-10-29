@@ -18,3 +18,7 @@
 ::-webkit-scrollbar-thumb:hover {
 	background: #242424;
 }
+
+body{
+	background: black;
+}
