@@ -5,7 +5,7 @@ import './index.css'
 import {BrowserRouter} from "react-router-dom"
 import { AuthContextProvider } from './context/AuthContext.jsx'
 import { SocketContextProvider } from './context/SocketContext.jsx'
-
+import { ThemeProvider } from './context/theme.jsx'
 
 createRoot(document.getElementById('root')).render(
   
@@ -13,7 +13,10 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
     <AuthContextProvider>
       <SocketContextProvider>
-      <App />
+        <ThemeProvider>
+        <App />
+        </ThemeProvider>
+   
       </SocketContextProvider>
    
     </AuthContextProvider>

@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import {BsSend} from "react-icons/bs"
 import useSendMessage from '../../hooks/useSendMessage'
+import useConversation from '../../zustand/useConversation'
 
 const MessageInput = () => {
   const [message,setMessage] = useState("")
   const {loading,sendMessage} = useSendMessage()
+  const {selectedConversation,setSelectedConversation} = useConversation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -12,10 +14,14 @@ const MessageInput = () => {
     await sendMessage(message);
     setMessage("")
   }
+  
   return (
-   <form className='px-4 my-3' onSubmit={handleSubmit}>
+    <div>
+      {!selectedConversation ? <></> : 
+      <>
+        <form className='px-4 my-3' onSubmit={handleSubmit}>
     <div className='w-full relative'>
-    <input type="text" className='border twxt-sm rounded-lg block w-full p-2.5 border-sky-500 text-white' placeholder='Send a message'
+    <input type="text" className='border text-sm rounded-lg block w-full p-2.5 border-sky-500 dark:text-gray-200 text-black dark:bg-black bg-white' placeholder='Send a message'
     value={message}
     onChange={(e)=>setMessage(e.target.value)}
     />
@@ -26,6 +32,11 @@ const MessageInput = () => {
     </div>
 
    </form>
+      </>}
+
+    </div>
+    
+   
   )
 }
 

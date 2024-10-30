@@ -21,13 +21,13 @@ const Conversation = ({conversation,lastIdx}) => {
                 </div>
                 <div className='flex flex-col flex-1'>
                 <div className='flex gap-3 justify-between'>
-                    <p className='font-bold text-gray-200'>{conversation.fullName}</p>
+                    <p className='font-bold dark:text-gray-200 text-black'>{conversation.fullName}</p>
                     {/* <span className='text-xl'>😁</span> */}
                 </div>
 
                 </div>
             </div>
-           {!lastIdx &&  <div className='divider my-0 py-0 h-1' />}
+           {!lastIdx &&  <div className='divider divider-info my-0 py-0 h-1' />}
 
            
         </>
